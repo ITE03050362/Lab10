@@ -1,49 +1,50 @@
 /* example.c*/
 
 #include <stdio.h>
-
 #include <pthread.h>
 
 void thread(void) {
 
-int i;
+  int i;
 
-for(i=0;i<13;i++) {
+  for(i=0;i<13;i++) {
 
-printf("This is a pthread.\n");
+      printf("This is a pthread.\n");
 
-sleep(1);
+      sleep(1);
+
+  }
 
 }
 
-}
+
 
 int main(void){
 
-pthread_t id;
+    pthread_t id;
 
-int i,ret;
+    int i,ret;
 
-ret=pthread_create(&id,NULL,(void *) thread,NULL);
+    ret=pthread_create(&id,NULL,(void *) thread,NULL);
 
-if(ret!=0) {
+    if(ret!=0) {
 
-printf ("Create pthread error!\n");
+        printf ("Create pthread error!\n");
 
-exit (1);
+        exit (1);
 
-}
+    }
 
-for(i=0;i<13;i++) {
+    for(i=0;i<13;i++) {
 
-printf("This is the main process.\n");
+        printf("This is the main process.\n");
 
-sleep(2);
+        sleep(2);
 
-}
+    }
 
-pthread_join(id,NULL);//等待線程（pthread）結束
+        pthread_join(id,NULL);//等待線程（pthread）結束
 
-return (0);
+        return (0);
 
 }
